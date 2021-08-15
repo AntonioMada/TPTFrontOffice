@@ -1,0 +1,101 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Leagues list</h3>
+            </div>
+            <div class="col text-center">
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>  
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col">username</th>
+                <th scope="col">address</th>
+                <th scope="col">birthday</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <th scope="row">{{user.name}}</th>
+                <td>{{user.email}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.birthday}}</td>
+                <td>{{user.isAdmin}}</td>
+                <td>   
+                  <mat-checkbox class="example-margin" [checked]="user.isEnable" (change)="status(user)">
+                    <div *ngIf="user.isEnable==true">activé</div>
+                    <div *ngIf="user.isEnable==false">desactivé</div>
+                  </mat-checkbox>
+                </td>
+              </tr>
+         
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              
+              <div *ngIf="prevPage; then thenBlocks else elseBlocks"></div>
+                <ng-template #thenBlocks>  
+                  <li class="page-item "> 
+                    <a class="page-link"  (click)="back()" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                </ng-template>
+                <ng-template #elseBlocks> 
+                   <li class="page-item disabled">  
+                    <a class="page-link"  (click)="back()" tabindex="-1">
+                      <i class="fas fa-angle-left"></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                </ng-template>
+                <div *ngIf="hasNextPage; then thens else elses"></div>
+                <ng-template #thens>  
+                  <li class="page-item">
+                    <a class="page-link"  (click)="pagination()">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ng-template>
+                <ng-template #elses> 
+                  <li class="page-item disabled" >
+                    <a class="page-link" (click)="pagination()">
+                      <i class="fas fa-angle-right"></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ng-template>
+        
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

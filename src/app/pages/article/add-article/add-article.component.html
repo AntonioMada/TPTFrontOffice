@@ -1,0 +1,82 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+  </div>
+</div>
+<div class="col-xl-12 order-xl-1 mt--7">
+  <div class="card card-profile bg-secondary shadow">
+    <div class="row justify-content-center">
+      <div class="col-lg-3 order-lg-2">
+        <div class="card-profile-image">
+
+        </div>
+      </div>
+    </div>
+    <div class="card-header bg-white border-0">
+      <div class="row align-items-center">
+        <div class="col-8">
+          <h3 class="mb-0">New Article</h3>
+        </div>
+        <div class="col-4 text-right">
+          <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="myForm" (ngSubmit)="submit()">
+        <div class="pl-lg-4">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group text-center">
+                <a href="javascript:void(0)">
+                  <img [src]="filePath" [alt]="myForm.value.name" style="max-height: 177px;" formcontrol="img">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group text-center">
+                <mat-form-field>
+                  <ngx-mat-file-input  accept="image/*" (change)="imagePreview($event)" placeholder="Select picture"  formControlName="filename"></ngx-mat-file-input>
+                  <mat-icon matSuffix>insert_photo</mat-icon>
+                </mat-form-field>
+                <p></p>
+              </div>
+            </div>
+
+          </div>          
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">titre</label>
+                <input type="text" id="input-email" class="form-control form-control-alternative" placeholder="entrer le titre" formControlName="titre" name="titre">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Date</label>
+                <input type="date" id="input-email" class="form-control form-control-alternative" formControlName="date" name="date">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Description</label>
+                <input type="text" id="input-email" class="form-control form-control-alternative" placeholder="entrer le description" formControlName="description" name="description">
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="row">
+          <div class="col-lg-2">
+            <button type="submit" class="btn btn-sm btn-primary">create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
