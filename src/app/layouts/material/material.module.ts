@@ -20,6 +20,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatNavList } from '@angular/material/list';
 import { MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   exports: [
@@ -27,7 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule, MatDatepickerModule,
     MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatGridListModule,
     MatCardModule, MatDividerModule, MatProgressSpinnerModule, MatProgressBarModule, MatStepperModule,
-    MatSnackBarModule, MatBottomSheetModule, MatTableModule, MatSelectModule,
+    MatSnackBarModule, MatBottomSheetModule, MatTableModule, MatSelectModule, MatMenuModule,
   ]
 })
 export class MaterialModule { }

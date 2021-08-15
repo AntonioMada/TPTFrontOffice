@@ -34,6 +34,13 @@
             <mat-grid-tile colspan="1">
               <app-button-pari [quote]="match.quote_team2" [idparie]="match.team_2[0].id" [team]="match.team_2[0].name" [match]="match" ></app-button-pari>
             </mat-grid-tile>
+            <mat-grid-tile colspan="5">
+              <div simpleCountdown
+              [dateTo]="toTimestamp(match.date, match.time)"
+              [endMessage]="'match commencer'"
+              [language]="'fr'"
+              [styles]="'font-size: 26px; text-align:center;color: #FFF;background-color: #3F51B5;padding: 18px 13px;font-weight: bold;min-width:40px;margin:0 1px;'"></div>
+            </mat-grid-tile>
           </mat-grid-list>
           <mat-divider [inset]="true"></mat-divider>
         </mat-drawer-content>

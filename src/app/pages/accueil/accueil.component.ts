@@ -6,8 +6,9 @@ import { Article } from 'src/app/models/article.model';
 import { environment } from 'src/environments/environment.dev';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { NgxSpinnerService } from 'ngx-spinner';
+//import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription, interval } from 'rxjs';
+import * as moment from 'moment';
 registerLocaleData(localeFr, 'fr');
 
 @Component({
@@ -18,7 +19,9 @@ registerLocaleData(localeFr, 'fr');
 export class AccueilComponent implements OnInit {
 
   baseurlfile = environment.urlstatic
-  constructor(private homeService:HomeService, private spinner: NgxSpinnerService) {
+  constructor(private homeService:HomeService, 
+    //private spinner: NgxSpinnerService
+    ) {
     this.loadContent();
    }
   matchmostpopular:Match[]
@@ -70,5 +73,23 @@ export class AccueilComponent implements OnInit {
         console.log('Ha terminado');
       }
     });
+  }
+
+  public getMillies(input: Date): number{
+    return new Date(input).getMilliseconds();
+  }
+
+  public toTimestamp(strDate, time){
+    let momentVariable = moment(strDate, 'YYYY-MM-DD');
+    // console.log(momentVariable.format('YYYY-MM-DD'))
+    let datevalue = momentVariable.format('YYYY-MM-DD')
+    console.log(datevalue+' '+time+':00')
+    let datefinal = datevalue+' '+time+':00';
+    // let stringvalue = momentVariable.format('YYYY-MM-DD');
+    // console.log(stringvalue)
+    var datum = Date.parse(datefinal);
+    console.log(datum)
+    console.log(datum/1000)
+    return datum/1000;
   }
 }

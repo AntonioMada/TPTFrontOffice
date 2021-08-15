@@ -1,4 +1,4 @@
-export class League {
+export class User {
   _id?:string;
   id: Number;
   email: string;

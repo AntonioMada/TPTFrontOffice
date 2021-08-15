@@ -1,7 +1,10 @@
+import { Observable } from 'rxjs';
+import { GlobalService } from 'src/app/services/global.service';
 import { SidenavService } from './../../services/sidenav.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-menu',
@@ -11,8 +14,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MenuComponent implements OnInit {
 
   user:any;
-  username = '';
-  constructor(private authService:AuthService, private router:Router, private sideNavService:SidenavService) { }
+  profil$: Observable<User>;
+  constructor(private authService:AuthService, private router:Router, private sideNavService:SidenavService, private globalService:GlobalService) { }
 
   ngOnInit() {
   }
@@ -26,17 +29,15 @@ export class MenuComponent implements OnInit {
 
   logout(){
     this.authService.logout();
+    const id_user = Number(localStorage.getItem("id_user"))
+    this.globalService.removeUserProfil()
     this.router.navigate(["/login"])
   }
 
   getInfo(){
-    let iduser = localStorage.getItem('id_user')
-    this.authService.getMe(iduser).subscribe((user) => {
-      // console.log(user)
-      // this.user = null
-      this.user = user
-      this.username = user.username;
-    })
+    this.profil$ = this.globalService.getUserProfil()
+    // console.log("------------------------------------")
+    // this.profil$.subscribe(user => console.log(user))
   }
 
   clickMenu() {

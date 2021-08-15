@@ -19,7 +19,7 @@ import { environment } from 'src/environments/environment.dev';
 // import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
-import { NgxSpinnerModule } from "ngx-spinner";
+//import { NgxSpinnerModule } from "ngx-spinner";
 import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips';
 import {MatBadgeModule} from '@angular/material/badge';
 
@@ -38,9 +38,10 @@ import { CdkColumnDef } from '@angular/cdk/table';
 import { SportComponent } from './pages/sport/sport.component';
 import { LeaguesComponent } from './pages/leagues/leagues.component';
 import { ButtoncolorDirective } from './utils/buttoncolor.directive';
-import { LottieModule } from 'ngx-lottie';
+//import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { QRCodeModule } from 'angularx-qrcode';
+import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -59,7 +60,9 @@ export function playerFactory() {
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, CommonModule, AppRoutingModule, CdkStepperModule,
     HttpClientModule,
-    MaterialModule, MenuModule, MatChipsModule, MatBadgeModule, NgxSpinnerModule, QRCodeModule,
+    MaterialModule, MenuModule, MatChipsModule, MatBadgeModule, 
+    //NgxSpinnerModule, 
+    QRCodeModule, NgxSimpleCountdownModule,
     // NgxSpinnerModule,
     JwtModule.forRoot({
       config: {
@@ -68,7 +71,7 @@ export function playerFactory() {
         disallowedRoutes: [environment.apiNodeURL+'/auth']
       }
     }),
-    [LottieModule.forRoot({ player: playerFactory })],
+    //[LottieModule.forRoot({ player: playerFactory })],
   ],
   providers: [
     CdkColumnDef, DatePipe, SidenavService,

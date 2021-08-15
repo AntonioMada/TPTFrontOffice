@@ -5,6 +5,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CouponComponent } from './layouts/coupon/coupon.component';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontoffice-angular-pari';
-  nbcoupon:number;
+  nbcoupon:Observable<number>
 
   constructor(
     public loaderService:LoaderService,
