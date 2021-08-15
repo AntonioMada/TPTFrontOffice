@@ -1,0 +1,100 @@
+<mat-card class="container" style="margin: 1%; width: 600px; left: 25%; top: 10%;">
+    <mat-card-header>
+        <mat-card-title>Inscription</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-horizontal-stepper [linear]="isLinear">
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+
+              <ng-template matStepLabel>Etape 1</ng-template>
+              <mat-grid-list cols="2" rowHeight="75px" gutterSize="5px">
+                <mat-grid-tile colspan="1">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nom*</mat-label>
+                    <input matInput placeholder="" value="" formControlName="name" [(ngModel)]="name" >
+                    <!-- <input matInput placeholder="" value="" required> -->
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Prénom*</mat-label>
+                    <input matInput placeholder="" value="" formControlName="username" [(ngModel)]="username">
+                    <!-- <input matInput placeholder="" value="" required> -->
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email*</mat-label>
+                    <input type="email" matInput placeholder="exemple@exemple.com" value="" formControlName="email" [(ngModel)]="email">
+                    <!-- <input type="email" matInput placeholder="exemple@exemple.com"  value="" required> -->
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Date de naissance</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthday" [(ngModel)]="birthday">
+                    <!-- <input matInput [matDatepicker]="picker"> -->
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="2">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Adresse</mat-label>
+                    <textarea matInput placeholder="Lot VU 101 ter AB" formControlName="address" [(ngModel)]="address"></textarea>
+                    <!-- <textarea matInput placeholder="Lot VU 101 ter AB" ></textarea> -->
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan="2">
+                  <button mat-button mat-raised-button color="primary" matStepperNext>Suivant</button>
+                </mat-grid-tile>
+              </mat-grid-list>
+
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+
+            <ng-template matStepLabel>Etape 2</ng-template>
+            <mat-grid-list cols="2" rowHeight="75px" gutterSize="5px">
+              <mat-grid-tile colspan="2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Mot de passe</mat-label>
+                  <input type="password" matInput placeholder="*****"  formControlName="password" [(ngModel)]="password">
+                  <!-- <input type="password" matInput placeholder="*****" formControlName="secondCtrl" required> -->
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile colspan="2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Confirmation mot de passe</mat-label>
+                  <input type="password" matInput placeholder="*****"  formControlName="passwordConfirm" [(ngModel)]="passwordConfirm">
+                  <!-- <input type="password" matInput placeholder="*****"  formControlName="secondCtrl" required> -->
+                </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile colspan="1">
+                <button mat-button mat-raised-button color="" matStepperPrevious>Précédent</button>
+              </mat-grid-tile>
+              <mat-grid-tile colspan="1">
+                <button mat-button mat-raised-button color="primary" matStepperNext>Suivant</button>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+          </form>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel icon>Validation</ng-template>
+          <mat-grid-list cols="2" rowHeight="75px" gutterSize="5px">
+            <mat-grid-tile colspan="2"> Veuillez maintenant finaliser votre inscription !</mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <button mat-button mat-raised-button color="primary" (click)="inscription()">Terminé</button>
+            </mat-grid-tile>
+          </mat-grid-list>
+
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+</mat-card>

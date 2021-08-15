@@ -1,27 +1,28 @@
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Sport } from '../models/sport.model';
-import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService { 
-  user:User[]
-  uri = "https://tptnode.herokuapp.com/api/user";
+export class UserService {
+
   constructor(private http:HttpClient) { }
 
-  getUser(page: number, limit: number):Observable<any>{
-    return this.http.get<User[]>(
-      this.uri+ "?page=" + page + "&limit=" + limit
-      );
-  }
-  loginAdmin(user:any): Observable<any> {
-
-      return this.http.post(this.uri + "/loginAdmin",user);
-  }
-  updateUser(user: User): Observable<any> {
-    return this.http.put(this.uri, user);
+  updateUser(id:number, email: string, name:string, username:string, address:string, birthday:Date, password: string): Observable<boolean> {
+    return this.http.put<any>(environment.apiNodeURL+'/api/user/update/profil',
+      {
+        id: id,
+        email: email,
+        name: name,
+        username: username,
+        address: address,
+        birthday: birthday,
+        password: password
+      }
+    );
   }
 }
+

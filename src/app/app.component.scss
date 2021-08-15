@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  // padding-top: 10%;
+}
+
+.load-container{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+.flottant-btn{
+  position: fixed;
+  float: right;
+  left: 90%;
+  top: 90%;
+  z-index: 99;
+}

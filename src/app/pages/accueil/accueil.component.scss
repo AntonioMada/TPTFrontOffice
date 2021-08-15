@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  border-radius: .5em;
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  box-shadow: 5em;
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.linear-gradient {
+  // background: linear-gradient(43deg, #ff1919, #c24696);
+  background: linear-gradient(43deg, #e2650f, #c24696);
+}
+
+.spinner__loading {
+  display: flex;
+  justify-content: center;
+}

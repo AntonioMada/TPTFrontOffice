@@ -1,1 +1,31 @@
-<router-outlet></router-outlet>
+
+<app-menu></app-menu>
+<app-spinner></app-spinner>
+<mat-drawer-container>
+  <mat-drawer #sidenav class="example-sidenav" mode="side" opened>
+
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/accounts'">
+        <mat-icon>launch</mat-icon>
+        Accès rapide
+      </a>
+      <a mat-list-item [routerLink]="'/sport'">
+        <mat-icon>star_half</mat-icon>
+        Sports
+      </a>
+      <a mat-list-item [routerLink]="'/calendrier'">
+        <mat-icon>calendar_today</mat-icon>
+        Calendrier
+      </a>
+      <!-- <a mat-list-item (click)="sidenav.toggle()"  mat-list-item>Close</a> -->
+    </mat-nav-list>
+  </mat-drawer>
+  <div>
+    <div style="height: 88vh; opacity: 200px;">
+      <button mat-fab color="primary" (click)="openBottomSheet()" class="flottant-btn">
+        <mat-icon [matBadge]="nbcoupon">shopping_basket</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

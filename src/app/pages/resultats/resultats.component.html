@@ -1,0 +1,44 @@
+<div class="container">
+  <mat-card style="margin: 1%;" appButtoncolor>
+    <mat-card-content>
+      <mat-grid-list cols="7" [rowHeight]="'30px'" [gutterSize]="'1px'" style="color:white;">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Date</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Montant Misé (MGA)</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Match</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Type</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Equipe pariée</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Gain (MGA)</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">Perte (MGA)</mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card style="margin: 1%;">
+      <mat-card-content>
+        <mat-grid-list *ngFor="let result of matchsresultat" cols="7" [rowHeight]="'50px'" [gutterSize]="'1px'" >
+          <mat-grid-tile [colspan]="1" [rowspan]="1">{{result.pari.dateInsert}}</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-chip color="accent" selected>
+              {{result.pari.amount | number: '1.0-2'}}
+            </mat-chip>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">({{result.match[0].team_1[0].name}} - {{result.match[0].team_2[0].name}}) </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-chip color="primary" selected>{{result.pari.type}}</mat-chip>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">{{getTeamParie(result.pari.id, result.match[0])}}</mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-chip color="accent" selected>{{result.gain | number: '1.0-2'}}</mat-chip>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-chip color="accent" selected>{{result.perte | number: '1.0-2'}}</mat-chip>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+      <mat-card-footer>
+          <!-- Footer -->
+      </mat-card-footer>
+  </mat-card>
+  <mat-chip-list aria-label="Fish selection">
+  </mat-chip-list>
+
+</div>

@@ -1,47 +1,38 @@
-<div class="header bg-gradient-danger py-7 py-lg-8">
 
-  <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-    </svg>
-  </div>
-</div>
-<!-- Page content -->
-<div class="container mt--8 pb-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-7">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Login</small>
-          </div>
-          <form #f="ngForm" (ngSubmit)="login()">
-            <div class="form-group mb-3">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                </div>
-                <input class="form-control" placeholder="Email" type="email" [(ngModel)]="username" name="username" ngModel required>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                </div>
-                <input class="form-control" placeholder="Password" type="password" [(ngModel)]="password" name="password" required>
-                
-              </div>
-            </div>
-            <label style="color:red">
-              {{error}}
-            </label>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary my-4" >Sign in</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+<ngx-spinner></ngx-spinner>
+<!-- <ng-lottie [options]="options" (animationCreated)="animationCreated($event)"></ng-lottie> -->
+
+<div style="margin: 1%; width: 600px; left: 25%; top: 10%;">
+  <mat-card class="login-card container">
+    <mat-card-title class="title" align="center">
+      <h4>Login</h4>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form (ngSubmit)="login()" class="content">
+          <mat-grid-list cols="2" rowHeight="75px" gutterSize="5px">
+            <mat-grid-tile colspan="2">
+              <mat-form-field>
+                <mat-label><mat-icon [inline]="true">account_box</mat-icon> username</mat-label>
+                <input matInput required [(ngModel)]="username" name="username">
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <mat-form-field>
+                <mat-label><mat-icon [inline]="true">vpn_key</mat-icon> Mot de passe</mat-label>
+                <input type="password" [(ngModel)]="password" matInput required  name="password">
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <button mat-stroked-button color="primary" align="center">
+                Se connecter
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-error *ngIf="error" class="error">
+            {{error}}
+          </mat-error>
+        </form>
+  </mat-card-content>
+  </mat-card>
 </div>

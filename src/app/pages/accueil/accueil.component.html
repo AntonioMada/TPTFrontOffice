@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="item">
+    <mat-card style="margin: 1%;height: 700px;">
+      <mat-card-header>
+        <mat-icon>public</mat-icon>
+          <h3>Matchs populaires</h3>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <div *ngIf="loading; else content">
+        <div class="spinner__loading">
+          <div>
+            <mat-progress-spinner color="warn" diameter="60" [value]="value" mode="determinate"></mat-progress-spinner>
+          </div>
+        </div>
+      </div>
+      <ng-template #content>
+        <mat-drawer-content style="margin-left: 0px!important;">
+          <mat-grid-list cols="5" rowHeight="42px" *ngFor="let match of matchmostpopular" style="background-color: rgb(238, 238, 238); margin: 1%;">
+            <!-- <mat-grid-tile colspan="5" rowspan="0.5">A venir</mat-grid-tile> -->
+            <mat-grid-tile colspan="5" rowheight="" class="linear-gradient" style="color: snow;">{{match.date | date:'mediumDate':'+0200':'fr'}} à {{match.time}}</mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">{{match.team_1[0].name}}</mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.team_1[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">VS</mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.team_2[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="1">{{match.team_2[0].name}}</mat-grid-tile>
+            <mat-grid-tile colspan="1">
+              <app-button-pari [quote]="match.quote_team1" [idparie]="match.team_1[0].id" [team]="match.team_1[0].name" [match]="match" ></app-button-pari>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+            <mat-grid-tile colspan="1">
+              <app-button-pari [quote]="match.quote_null" [idparie]="0" [team]="matchnull" [match]="match" ></app-button-pari>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1"></mat-grid-tile>
+            <mat-grid-tile colspan="1">
+              <app-button-pari [quote]="match.quote_team2" [idparie]="match.team_2[0].id" [team]="match.team_2[0].name" [match]="match" ></app-button-pari>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-divider [inset]="true"></mat-divider>
+        </mat-drawer-content>
+      </ng-template>
+
+    </mat-card>
+  </div>
+  <div class="item">
+    <mat-card style="margin: 1%;height: 700px;">
+      <mat-card-header align="center">
+        <!-- <mat-card-title style="color: rgb(240, 142, 29);"> -->
+          <h3 style="color: rgb(240, 142, 29);">
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+            <mat-icon>star</mat-icon>
+          </h3>
+          <h3> A ne pas manqué</h3>
+        <!-- </mat-card-title> -->
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-drawer-content style="height:500pt;overflow:auto;margin-left: 0px!important;">
+        <mat-grid-list cols="5" rowHeight="40px" *ngFor="let match of matchnottobemissed" style="background-color: rgb(238, 238, 238); margin: 1%;">
+          <mat-grid-tile colspan="5" rowheight="" class="linear-gradient" style="color: snow;">{{match.match[0].date | date:'mediumDate':'+0200':'fr'}} à {{match.match[0].time}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">{{match.match[0].team_1[0].name}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.match[0].team_1[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">VS</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.match[0].team_2[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">{{match.match[0].team_2[0].name}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari  [quote]="match.match[0].quote_team1" [idparie]="match.match[0].team_1[0].id" [team]="match.match[0].team_1[0].name" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1"></mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari [quote]="match.match[0].quote_null" [idparie]="0" [team]="matchnull" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1"></mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari [quote]="match.match[0].quote_team2" [idparie]="match.match[0].team_2[0].id" [team]="match.match[0].team_2[0].name" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-drawer-content>
+    </mat-card>
+  </div>
+  <div class="item">
+    <mat-card style="margin: 1%;width: 405px;height: 700px;">
+        <mat-card-header>
+            <mat-card-title>
+              <h3>Article du jour: {{articles[0].titre}}</h3>
+            </mat-card-title>
+            <mat-card-subtitle>{{articles[0].date | date:'mediumDate':'+0200':'fr'}}</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage src="https://tptnode.herokuapp.com/static/image/articles/{{articles[0].image}}">
+        <mat-card-content>
+          {{articles[0].description}}
+        </mat-card-content>
+        <mat-card-actions align="center">
+            <!-- <button mat-button color="warn">Article Suivant</button> -->
+            <button appButtoncolor mat-fab color="primary" aria-label="Article Suivant">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button appButtoncolor mat-fab color="primary" aria-label="Article Suivant">
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </mat-card-actions>
+        <!-- <mat-card-footer>
+            Footer
+        </mat-card-footer> -->
+    </mat-card>
+  </div>
+</div>

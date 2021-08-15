@@ -1,14 +1,12 @@
-
-export class User {
-    _id?:string;
-    id:number;
-    email:string;
-    name:string;
-    username:string;
-    address:number;
-    birthday:Date;
-    password:String
-    isAdmin:Boolean
-    isEnable:Boolean
-  }
-  
+export class League {
+  _id?:string;
+  id: Number;
+  email: string;
+  name: string;
+  username: string;
+  address: string;
+  birthday: Date;
+  password: string;
+  isAdmin: boolean;
+  isEnable:boolean;
+}

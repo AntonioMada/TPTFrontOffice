@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="linear-gradient">
+  <mat-toolbar-row>
+    <!-- <button mat-icon-button (click)="clickMenu()">
+      <mat-icon >polymer</mat-icon>
+    </button>
+
+    <h1>Wanna Bet</h1> -->
+    <img style="width: 105px;" src="./../../../assets/images/logo-wanabet.png" alt="Photo of a Shiba Inu">
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/accueil'"> <mat-icon>home</mat-icon> Accueil </a>
+      <a mat-button [routerLink]="'/matchs'"> <mat-icon>polymer</mat-icon> Matchs </a>
+      <a mat-button [routerLink]="'/resultat'"> <mat-icon>outlined_flag</mat-icon> Résultats </a>
+      <!-- <a mat-button [routerLink]="'/statistique'"> <mat-icon> bar_chart</mat-icon> Statistiques </a> -->
+      <a mat-button [routerLink]="'/login'" *ngIf="!isLoggedIn()"> Connexion </a>
+      <a mat-button [routerLink]="'/inscription'" *ngIf="!isLoggedIn()"> Inscription </a>
+      <a mat-button (click)="logout()" *ngIf="isLoggedIn()"> Déconnexion </a>
+    </div>
+    <span class="menu-spacer"></span>
+    <span class="menu-spacer"></span>
+    <a *ngIf="isLoggedIn()" class="user-identifiant">
+      {{username}}
+    </a>
+    <div mat-card-avatar *ngIf="isLoggedIn()" style="background-image: url('../../../assets/images/pngwing.com.png');background-size: cover;"></div>
+  </mat-toolbar-row>
+</mat-toolbar>

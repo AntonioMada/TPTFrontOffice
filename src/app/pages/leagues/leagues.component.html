@@ -1,0 +1,15 @@
+<div class="box">
+  <div class="flex-item" *ngFor="let league of leagues">
+    <mat-card style="margin: 1%;">
+      <mat-card-header>
+        <mat-card-title>
+          <h3>{{league.name}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-drawer-content style="height:308pt;overflow:auto; margin-left: 0px!important;">
+        <div mat-card-avatar class="item-logo" style="background-image: url( https://tptnode.herokuapp.com/static/image/leagues/{{league.image}}); background-size: cover;"></div>
+      </mat-drawer-content>
+    </mat-card>
+  </div>
+</div>

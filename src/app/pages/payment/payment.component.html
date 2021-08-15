@@ -1,0 +1,82 @@
+
+    <mat-card style="margin: 1%;">
+      <mat-card-header>
+        <mat-card-title>
+          <h3>Paiement</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-drawer-content style="height:308pt;overflow:auto; margin-left: 0px!important;">
+
+        <div mat-list-item *ngFor="let coupon of (coupons|async) ">
+          <mat-grid-list cols="5" rowHeight="42px" style="background-color: rgb(218, 228, 238); margin: 1%; border-radius: 5px;">
+            <mat-grid-tile colspan="5" style="background-color:rgb(112, 84, 240); color: rgb(241, 238, 238);">
+              ({{coupon.match.team_1[0].name}} - {{coupon.match.team_2[0].name}})
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1">
+              Parie sur :
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <mat-chip color="accent" selected>{{ coupon.team}}</mat-chip>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2"> X {{ coupon.quote | number: '1.0-2'}}</mat-grid-tile>
+            <!-- <mat-grid-tile colspan="1" rowspan="2">
+              <button mat-mini-fab color="warn" aria-label="retirer le parie" (click)="removePari(coupon)">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-grid-tile> -->
+            <mat-grid-tile colspan="1">
+              Montant:
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1">
+                {{coupon.amount}}
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1">Gain potentiel:</mat-grid-tile>
+            <mat-grid-tile colspan="1">
+              <span>{{coupon.amount*coupon.quote | number: '1.0-2' }} MGA</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+
+      </mat-drawer-content>
+      <mat-card-footer>
+        <mat-grid-list cols="5">
+          <mat-grid-tile colspan="1">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>code carte bancaire</mat-label>
+              <input type="text" class="form-control" matInput [(ngModel)]="cartebancaire">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <!-- type de paiement -->
+            <mat-form-field appearance="fill">
+              <mat-label>Méthode de paiement</mat-label>
+              <mat-select (selectionChange)="changeTypePaiement($event.value)">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <!-- montant total-->
+            <mat-chip color="accent" selected>
+              {{montantTotal | number: '1.0-2' }} MGA
+            </mat-chip>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            {{dateNow}}
+          </mat-grid-tile>
+          <!-- <mat-grid-tile colspan="1">
+            REF21033
+          </mat-grid-tile> -->
+          <mat-grid-tile colspan="1">
+            <button mat-flat-button color="primary" (click)="validerPaiement()">
+              <mat-icon>credit_card</mat-icon>
+              Valider
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-footer>
+    </mat-card>
+

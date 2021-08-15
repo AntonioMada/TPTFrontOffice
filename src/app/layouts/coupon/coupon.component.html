@@ -1,0 +1,59 @@
+<mat-nav-list>
+  <mat-chip-list aria-label="Fish selection">
+  </mat-chip-list>
+  <div mat-list-item *ngFor="let coupon of (coupons|async) ">
+    <mat-grid-list cols="5" rowHeight="42px" style="background-color: rgb(218, 228, 238); margin: 1%; border-radius: 5px;">
+      <mat-grid-tile colspan="5" style="background-color:rgb(112, 84, 240); color: rgb(241, 238, 238);">
+        ({{coupon.match.team_1[0].name}} - {{coupon.match.team_2[0].name}})
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        Parie sur :
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <mat-chip color="accent" selected>{{ coupon.team}}</mat-chip>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1"> X {{ coupon.quote | number: '1.0-2'}}</mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="2">
+        <button mat-mini-fab color="warn" aria-label="retirer le parie" (click)="removePari(coupon)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        Montant:
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="number" (change)="onChangeMontant($event,coupon)" class="form-control" matInput value="{{coupon.amount}}">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">Gain potentiel:</mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <span>{{coupon.amount*coupon.quote | number: '1.0-2' }} MGA</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</mat-nav-list>
+
+<div mat-list-item style="background-color: rgb(240, 95, 51); margin-top: 2px; color: seashell;">
+  <mat-grid-list cols="4" rowHeight="25px">
+    <mat-grid-tile colspan="2">
+      Mise Totale :
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      {{misetotal | number: '1.0-2'}} MGA
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      Gains Potentiels*:
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2">
+      {{gainpotentiel | number: '1.0-2'}} MGA
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<div mat-list-item>
+  <button mat-flat-button color="primary" [disabled]="!checkPaiement()" (click)="payer()" style="width:100%;">
+    <mat-icon>credit_card</mat-icon>
+    Payer
+  </button>
+</div>

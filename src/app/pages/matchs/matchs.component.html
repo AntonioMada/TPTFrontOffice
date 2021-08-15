@@ -1,0 +1,28 @@
+<mat-card style="margin: 1%;">
+  <mat-card-header>
+    <mat-card-title>Top 20 des matchs les plus pariés</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-drawer-content style="margin-left: 0px!important;">
+    <mat-grid-list cols="5" rowHeight="50px" *ngFor="let match of matchstop20" style="background-color: rgb(230, 215, 238); margin: 1%;">
+      <mat-grid-tile colspan="5" rowheight="" class="linear-gradient" style="color: snow;">{{match.match[0].date | date:'mediumDate':'+0200':'fr'}} à {{match.match[0].time}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">{{match.match[0].team_1[0].name}}</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.match[0].team_1[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">VS</mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><div mat-card-avatar class="item-logo" style="background-image: url(https://tptnode.herokuapp.com/static/image/teams/{{match.match[0].team_2[0].logo}}); background-size: cover; border: thick double #fbfeff; width: 50px!important;"></div></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1">{{match.match[0].team_2[0].name}}</mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari  [quote]="match.match[0].quote_team1" [idparie]="match.match[0].team_1[0].id" [team]="match.match[0].team_1[0].name" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1"></mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari [quote]="match.match[0].quote_null" [idparie]="0" [team]="matchnull" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="1"></mat-grid-tile>
+          <mat-grid-tile colspan="1">
+            <app-button-pari [quote]="match.match[0].quote_team2" [idparie]="match.match[0].team_2[0].id" [team]="match.match[0].team_2[0].name" [match]="match.match[0]" ></app-button-pari>
+          </mat-grid-tile>
+    </mat-grid-list>
+    <mat-divider [inset]="true"></mat-divider>
+  </mat-drawer-content>
+</mat-card>
