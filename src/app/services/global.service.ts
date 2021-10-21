@@ -23,7 +23,7 @@ export class GlobalService {
   }
 
   getUserProfil(){
-    console.log("getUserProfil()")
+    // console.log("getUserProfil()")
     return this.profil.asObservable();
   }
 

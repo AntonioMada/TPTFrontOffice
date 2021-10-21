@@ -15,6 +15,8 @@ export class AuthService {
     return this.http.post<{token: string, iduser: string}>(environment.apiNodeURL+'/api/user/login', {username: login, password: password})
       .pipe(
         map(result => {
+          console.clear()
+          console.log(result);
           localStorage.setItem('access_token', result.token);
           localStorage.setItem('id_user', result.iduser);
           return true;

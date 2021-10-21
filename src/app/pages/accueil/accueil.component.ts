@@ -19,7 +19,7 @@ registerLocaleData(localeFr, 'fr');
 export class AccueilComponent implements OnInit {
 
   baseurlfile = environment.urlstatic
-  constructor(private homeService:HomeService, 
+  constructor(private homeService:HomeService,
     //private spinner: NgxSpinnerService
     ) {
     this.loadContent();
@@ -41,16 +41,16 @@ export class AccueilComponent implements OnInit {
 
   matchsLesPlusPopulaires(){
     this.homeService.getMatchMostPopulate().subscribe((matchs) => {
-      console.log(matchs.docs)
+      // console.log(matchs.docs)
       this.matchmostpopular = matchs.docs
-      console.log(this.matchmostpopular)
+      // console.log(this.matchmostpopular)
     });
   }
 
   matchsANePasManque(){
     this.homeService.getMatchNotToBeMissed().subscribe((matchs) => {
       this.matchnottobemissed = matchs
-      console.log(this.matchnottobemissed)
+      // console.log(this.matchnottobemissed)
     });
   }
 
@@ -70,7 +70,7 @@ export class AccueilComponent implements OnInit {
         subs$.unsubscribe();
         this.loading = false;
         this.value = 0;
-        console.log('Ha terminado');
+        // console.log('Ha terminado');
       }
     });
   }
@@ -83,13 +83,13 @@ export class AccueilComponent implements OnInit {
     let momentVariable = moment(strDate, 'YYYY-MM-DD');
     // console.log(momentVariable.format('YYYY-MM-DD'))
     let datevalue = momentVariable.format('YYYY-MM-DD')
-    console.log(datevalue+' '+time+':00')
+    // console.log(datevalue+' '+time+':00')
     let datefinal = datevalue+' '+time+':00';
     // let stringvalue = momentVariable.format('YYYY-MM-DD');
     // console.log(stringvalue)
     var datum = Date.parse(datefinal);
-    console.log(datum)
-    console.log(datum/1000)
+    // console.log(datum)
+    // console.log(datum/1000)
     return datum/1000;
   }
 }
