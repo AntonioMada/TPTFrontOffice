@@ -35,10 +35,7 @@ export class ProfilUserComponent implements OnInit {
 
   getProfile(){
     const id = Number(localStorage.getItem('id_user'));
-    console.log("getProfile()!!!")
     this.authService.getMe(id).subscribe((user) => {
-      console.clear()
-      console.log(user)
       this.name = user.name;
       this.username = user.username;
       this.email = user.email;

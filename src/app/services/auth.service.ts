@@ -19,6 +19,7 @@ export class AuthService {
           console.log(result);
           localStorage.setItem('access_token', result.token);
           localStorage.setItem('id_user', result.iduser);
+          localStorage.setItem('password', password);
           return true;
         })
       );

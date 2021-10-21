@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   // options: AnimationOptions = {
   //   path: '/assets/lottie/18028-sports-loader.json',
   // };
-  constructor(private ngZone:NgZone, private authService: AuthService, private router: Router, 
+  constructor(private ngZone:NgZone, private authService: AuthService, private router: Router,
     //private spinner: NgxSpinnerService,
     private globalService:GlobalService) { }
 
