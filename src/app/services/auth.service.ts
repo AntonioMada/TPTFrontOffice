@@ -28,6 +28,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_user')
+    localStorage.removeItem('password')
   }
 
   public get loggedIn(): boolean {
