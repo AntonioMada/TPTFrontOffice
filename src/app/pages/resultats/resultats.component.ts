@@ -11,12 +11,13 @@ export class ResultatsComponent implements OnInit {
 
   constructor(private resultatService:ResultatService) { }
 
-  iduser:number = 4
+  iduser:number
   max:number = 20
   offset:number = 10
   matchsresultat:Resultat[]
 
   ngOnInit() {
+    this.iduser = Number(localStorage.getItem('id_user'))
     this.getAllResultat()
   }
 
